@@ -1,44 +1,52 @@
-# RestFull API
+# Coasther
 
-Coasther adalah sebuah aplikasi mobile kost-kostan berbasis React Native CLI, dikembangkan dengan konsep desain minimalis–elegan untuk mempermudah proses pencarian, pengelolaan, dan pembayaran kost. Aplikasi ini berfungsi sebagai platform digital bagi pemilik dan penghuni kost, menyediakan akses cepat terhadap informasi kamar, fasilitas, penggunaan listrik & air, hingga riwayat pembayaran.
+**A boarding-house (kost) mobile app: browse rooms, manage a tenancy, and track electricity, water, and payments from one place.**
 
-## Fitur
+Coasther is the tenant-facing React Native app of **COASTHER**, a smart boarding-house system. In the full system, ESP32 meters (PZEM-004T for power, YF-S201 for water flow) report usage over MQTT/HiveMQ. This repository contains the mobile app, which currently runs on **dummy data** for demonstration.
 
-- IoT untuk memantau Listrik dan Air
-- Detail Kamar
-- Review Penghuni
-- Dashboard Penyewa
-- Metode Pembayaran
-- Google Maps Integration
+## Features
 
-## Anggota Kelompok
+- **Login and profile**: sign-in screen, profile card, and edit-profile form.
+- **Home**: banner, recommended rooms, facilities, location info, and resident reviews.
+- **Rooms**: room list with a filter bar, and a detail page with images, facilities, description, reviews, and a booking button.
+- **Tenant dashboard**: usage summary (electricity and water), payment history and detail, announcements, and quick actions.
+- **Maps**: Google Maps integration for the property location.
 
-- [@GungNanda-230040028](https://www.github.com/zeppyx13)
-- [@Dewa-230040026](https://www.github.com/DwDhrm7)
+## Tech stack
 
-## Deployment
+React Native 0.82, TypeScript, React Navigation (native stack), `react-native-maps`, `react-native-vector-icons`.
 
-Untuk memulai Project ini clone Repository ini dan ganti AndroidManifest1.xml menjadi AndroidManifest.xml pada android/app/src/main dan isi api google maps
+## Getting started
 
-```bash
-  git clone https://github.com/zeppyx13/Costher.git
-```
-
-lalu lakukan install package yang diperlukan dengan:
+Requires Node.js, Android Studio (or Xcode on macOS), and a Google Maps API key for the map screen.
 
 ```bash
-  npm install
+git clone https://github.com/DwDhrm7/Coasther.git
+cd Coasther
+npm install
 ```
 
-## Badges
+Android setup:
 
-License:
+1. In `android/app/src/main`, rename `AndroidManifest1.xml` to `AndroidManifest.xml`.
+2. Add your own Google Maps API key to that file. Do not commit the key.
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+Run the app:
 
+```bash
+npm start            # start Metro
+npm run android      # run on Android
+```
 
-##REMINDER
+## Project structure
 
-For now on this project, we're only using dummy data for exampling.
+```
+src/
+  components/   Home, Room, RoomDetail, Dashboard, Profile, Login, shared Header/Navbar
+  App.tsx       Navigation setup
+  assets/       Images
+```
+
+## Status
+
+A team project built with [@GungNanda](https://github.com/zeppyx13). The app uses dummy data; wiring it to the live MQTT/IoT backend and a real payment flow is future work.
